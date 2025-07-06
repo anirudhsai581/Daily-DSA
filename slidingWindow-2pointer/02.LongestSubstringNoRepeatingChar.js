@@ -6,8 +6,8 @@ Input : S = "aaabbbccc"    Output : 2
 S contains only English lowercase letters.
 
 */
-//brute force : we generate all the substrings and check for the max length, we maintain a hash array of size 256(meant for any type of char in string tho here only lowercase eng letters)
-//we iterate in the innerloop from i to end with starting char as i , which will be first char initially and then we find all the substrings starting with it , whenever we encounter a repeat char we start finding substrings starting with next character,this way we cover all substrings and parallely find the max length after each char is added to the substring.
+//brute force : we generate all the substrings and check for the max length, we maintain a hash array of size 256(meant for any type of char in string thhough  here only lowercase eng letters)
+//we iterate in the innerloop from i to end with starting char as i , which will be first char initially and then we find all the substrings starting with char at 'i' , whenever we encounter a repeat char we start finding substrings starting with next character (char at i+1),this way we cover all substrings and parallely find the max length after each char is added to the substring.
 //after every inner iteration we reinitiate has map as we need to rember new occurences.similarly substring is intiated to empty
 
 
@@ -41,7 +41,8 @@ function BrutelongetSubstringNoRepeat(s) {
 
 // console.log(BrutelongetSubstringNoRepeat(s));
 
-// optimal approach is , whenever we encounter a repeat char we remove l from the window 
+// optimal approach is , whenever we encounter a repeat char we move L to the right of wherever that repeat char occured before.(we know which positon it occured as we are updating the hash array with 'r' when ever we see it).
+//also we need to check if the char in hash is not '0' then is it still in our current window as chance could be we have updated its occurence but moving L made it out of our current window. Todo this we can have extra check if the value of it in hash array is >L then only we can update L.
 
 function optimalLongestSubstringNoRepeat(s){
      let n=s.length;
