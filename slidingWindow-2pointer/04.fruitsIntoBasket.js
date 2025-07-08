@@ -19,7 +19,7 @@ Constraints:
 /*
 we maintain hash array to store all occurences, we have types variable to track if any newoccurence of char is found then sliding window approach to find max length of window, if the type is increased more than 2 we shrink and in shrink we have a while loop which runs as long as diff>2 and also we are increasing l to right in each cycle and reduce the occurence of element at l untill we find only two diff chars in our window.
 since the elements of array can lie between 0 to length of array we take length of array for hash size if chars array we could have then taken 256 size for hash array.
-*/
+*/ 
 
 function totalFruits(fruits) {
     //your code goes here
