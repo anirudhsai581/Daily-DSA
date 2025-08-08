@@ -12,8 +12,9 @@ Constraints:
 
 //brute force:linear search O(n)
 
-//Optimal : Binary search as array is sorted, now by observation we know that when we are at mid ,one half is sorted and other is not , left will be sorted if arr[low]<=arr[mid] and right will be sorted half if arr[mid]<=arr[high].so by this we can figure out which half is sorted . then we check if target is present in this sorted array, we can check it by comparing with either ends of sorted array. (if this was not the sorted half we would not be surely knowing so we found out sorted half first). 
-// so if left is sorted half : if we arr[low]<=target<arr[mid] we will know its in this left half. we do high=mid-1 else its in right half we do low=mid+1.
+//Optimal : Binary search as array is sorted, now by observation we know that when we are at mid ,one half is sorted and other is not , left will be sorted if arr[low]<=arr[mid] and right will be sorted half if arr[mid]<=arr[high].so by this we can figure out which half is sorted . then we check if target is present in this sorted array, we can check it by comparing with either ends of sorted array. (if this was not the sorted half we would not be surely knowing so we found out sorted half first).
+
+// so if left is sorted half (arr[low]<=arr[mid]): if we arr[low]<=target<arr[mid] we will know its in this left half. we do high=mid-1 else its in right half we do low=mid+1.
 //if right is sorted half: if we check arr[mid]<target and target <=arr[high],we will will know its in this right half so we do low=mid+1 else high=mid-1.
 //if its at arr[mid]:arr[mid]==target return 
 
