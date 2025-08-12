@@ -20,7 +20,7 @@ space complexity is O(n/2)=>O(n) and T.C is O(n/2)=>O(n) as call stack will be m
 
 
 function palindromeCheck(s) {
-        //your code goes here
+        //solved on own
         let n=s.length;
         let low=0;let high=n-1;
         while(low<=high){
