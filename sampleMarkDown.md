@@ -4,6 +4,8 @@
 # 📚 My Learning Notes
 <!-- '#' creates an H1 heading. Use one per document for the main title -->
 
+
+<!-- USE CTRL+SHIFT+V inside md file to preview rendered in vscode itself -->
 ---
 
 <!-- ===================== -->
