@@ -1,12 +1,27 @@
-
-# 📚 My Learning Notes for Binary Search
-
-## 📌 polarisation Concept:
-![Image for polarity concept Binarysearch](../assets/polarity_BS.png)
+<!-- ===================== -->
+<!--      MAIN HEADING     -->
+<!-- ===================== -->
+# 📚 My Learning Notes
+<!-- '#' creates an H1 heading. Use one per document for the main title -->
 
 ---
 
+<!-- ===================== -->
+<!--     SUBHEADINGS       -->
+<!-- ===================== -->
+## 📌 Topic Title
+<!-- '##' creates an H2 heading. Good for major sections -->
 
+### 🔹 Subtopic
+<!-- '###' creates an H3 heading. Use for smaller subsections -->
+
+---
+
+<!-- ===================== -->
+<!--        TEXT           -->
+<!-- ===================== -->
+This is a normal paragraph of text.  
+You can make things **bold**, *italic*, or even ~~strikethrough~~.
 
 Inline code looks like this: `const x = 10;`
 
