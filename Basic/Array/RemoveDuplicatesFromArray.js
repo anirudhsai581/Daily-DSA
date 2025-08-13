@@ -48,6 +48,9 @@ duplicate is present we always store next unique element found in iteration at i
 moving i and we store all unique values one by one with track of count index by swaps by end of i reaching n ,we have
 stored all unique at the count duplicates gets pushed to end by swaps
 T.C : O(n), S.C is O(1) (we have done inplace as mentioned)
+
+//essentially this is like a two pointer approach one pointer for iterating and another pointer pointing to till where 
+current unique elements are present where next unique element to be updated.
 Difficulty:Easy.
 */
 function  removeDuplicates(nums) {
