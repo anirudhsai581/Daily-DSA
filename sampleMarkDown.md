@@ -42,7 +42,7 @@ greet("Anirudh");
 <!-- ===================== -->
 <!--        IMAGE          -->
 <!-- ===================== -->
-![Alt text: short description for accessibility](images/example.png)
+<!-- ![Alt text: short description for accessibility](images/example.png) -->
 <!-- Replace 'images/example.png' with your image path or URL.
      The alt text describes the image for screen readers or if the image can't load -->
 
