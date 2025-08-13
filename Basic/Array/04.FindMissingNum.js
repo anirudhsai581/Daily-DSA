@@ -8,6 +8,8 @@ n == nums.length
 1 <= n <= 104
 0 <= nums[i] <= n
 All the numbers of nums are unique.
+
+//dificulty:Easy
  */
 /*brute force: to check in array for each element from 0 to N ,by iterating over array .once any number is not present
 return that number immediately.T.C is O(n**2).S.C is O(1).(obvious solution )
@@ -44,7 +46,7 @@ function missingNumber(nums) {
     return expectedSum-sum;
 }
 let nums=[1,3,2,0,5];
-console.log(missingNumber(nums));
+console.log(missingNumber(nums));//4
 
 /*
 optimal 2:
