@@ -58,5 +58,5 @@ function frequencySort(s) {
 
     //to extract only characters 
      return charFreqPairs.map(pair => pair[0]);
-
     }
+console.log(frequencySort("bbccddaaa"))
