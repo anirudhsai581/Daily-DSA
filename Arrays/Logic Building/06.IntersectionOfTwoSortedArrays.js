@@ -9,3 +9,24 @@ Constraints:
 -104 <= nums1[i], nums2[i] <= 104
 Both nums1 and nums2 are sorted in non-decreasing order.
 */
+
+//optimal: 
+
+function intersectionArray(nums1, nums2) {
+    let i=0;let j=0; let n=nums1.length;let m=nums2.length;
+    let res=[];
+    //solved on own(already intution from union) easy as no need to handle dup's also
+    while(i<n&&j<m){
+        if(nums1[i]<nums2[j]){
+            i++;
+        }
+        else if(nums1[i]>nums2[j]){
+            j++;
+        }
+        else{
+          res.push(nums1[i]);
+          i++;j++;
+        }
+    }
+    return res;
+}
