@@ -39,10 +39,9 @@ function isomorphicString(s, t) {
             if(arr1[s.charCodeAt(i)] !== arr2[t.charCodeAt(i)]){ return false};
 
             //update the last seen positions.
-            arr1[s.charCodeAt(i)] =i+1 ;// we can do i here but we are storing in i+1 because if we 
-            //had any char with code 0 and also since 0 in our array also used to indicate not seen at there will be mix update
-            //although since our ascii for loweercase eng alphabets gonna be 97 to 122 no issue here but generic characters
-            //will have a problem.
+            arr1[s.charCodeAt(i)] =i+1 ;// we are storing in i+1 because if we had stored 0 it would not create 
+            // a diff with character not seen at all (0 in the array) or char seen at index 0. 
+   
             arr2[t.charCodeAt(i)] =i+1;
         }
         return true;
