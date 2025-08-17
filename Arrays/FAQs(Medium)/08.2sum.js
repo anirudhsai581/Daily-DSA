@@ -14,6 +14,7 @@ Only one valid answer exists.
 //Brute: nested loops traverse all possible pairs and check if sum==target if yes return as one and only pair is guaranteed.
 //T.C is O(n**2) S.C is O(1).
 function BrutetwoSum(nums, target) {
+  //solved on own 
     let n=nums.length;
     for(let i=0;i<n;i++){
       for(let j=i+1;j<n;j++){
@@ -36,6 +37,7 @@ in theory in worst case collisions may happen and map operations can degrade upt
  practical as JS engines v8 etc handle collisions very well,worst case scenario almost never happens.
 twoSum(nums, target) {
         let map = new Map();  // key: number, value: index
+        //hash approach learnt from editorial
         for (let i = 0; i < nums.length; i++) {
             let complement = target - nums[i];
             if (map.has(complement)) {
@@ -61,7 +63,7 @@ T.C is O(nlogn) to sort +O(n) to create array of object(idx+val) +O(n) for two p
 S.C is O(n) for array of objects (array size n).
 */
 function OptimalTwoSum(nums, target) {
-     
+     //idea on own but duplicate handling mistake
     let numsWithidx = nums.map((val,idx)=>({val,idx}))
 
    /*arr.map(callback(element, index, array) { ... }) this is signature of Array.prototype.map

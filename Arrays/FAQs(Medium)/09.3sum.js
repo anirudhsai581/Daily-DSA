@@ -23,6 +23,7 @@ after stringify we check if set has that if not store also push this to res arra
 // for 2: set is taking O(m),m is no.of unique triplets and output array is also O(m).
 code for 1 :
 function bruteforce3sum(nums){
+//solved on own
     let n=nums.length;let res=[];
      nums.sort((a,b)=>a-b);
     for(let i=0;i<n;i++){
@@ -44,6 +45,7 @@ code for bruteforce2:
 function  brute2threeSum(nums) {
     //Absolute bruteforce : 3nested loops but we dont want duplicate triplets
     // we can use 1.set to avoid dups 2.sort array initially then skip in each of nested loop if previous num is same as current
+    //set idea learnt to handle duplicates
     let n = nums.length;
     let res = [];
     let seen = new Set();
@@ -78,6 +80,8 @@ also  our triplet may not be unique if we had duplicates in array etc. so we sor
 check in set if already present if not we store this now in set and also push this to result array.
 T.C is O(n**2), hashlookup and insertion set is almost always O(1). S.C is O(n) worst case for hashmap size.
  threeSum(nums) {
+ //hash idea learnt from editorial and also especially idea to avoid duplicates we are storing hash values only that are already seen (in j loop)
+ 
     let n = nums.length;
     let res = [];
     let seenTriplets = new Set();
@@ -107,6 +111,7 @@ More better &best: sorting +2 pointer
 1.More better: sorting +2 pointer but use set at end to handle duplicates :
 T.C is O(n**2),space compelxity is o(m)-m no.of unique triplets stored in set.
 function threeSum(nums) {
+//solved on  own 
     let  n=nums.length;let target =0;
     let res=[];
     let seen = new Set();
@@ -140,6 +145,7 @@ Best: sorting +2 pointer and handling duplicates takind advantage of array is so
 T.C is O(n*n) S.C is O(1).
 */ 
 function OptimalthreeSum(nums) {
+    //solved on own except the j and k duplicate handling loops
     let  n=nums.length;let target =0;
     let res=[];
     nums.sort((a,b)=>a-b);
