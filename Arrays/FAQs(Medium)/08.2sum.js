@@ -92,3 +92,14 @@ function OptimalTwoSum(nums, target) {
   let nums=[1, 6, 2, 10, 3]; let target=12;
   console.log(OptimalTwoSum(nums,target));
   console.log(BrutetwoSum(nums,target))
+
+  /*
+Conlusion:
+For current problem actually hashmap version is best , as we want indices the optimal approach needs extra space too.
+*Approach*	                 *Best Use Case*	                     *Efficiency*
+Brute-force             	Very small arrays                        Slow, O(n²) ,S.C is O(1).
+Sorting + Two Pointers  	If you also need sorted pairs	        O(n log n), S.C:extra array O(n)
+Hash Map	                Most practical for indices	            O(n) fastest,S.C is O(n)
+For 2sum variant where index is not needed just want if a pair exist =>yes/no
+then  sort+2 pointers is best as even though its O(nlogn) space is O(1), then hashmap solution which is O(n) space and time
+  */
