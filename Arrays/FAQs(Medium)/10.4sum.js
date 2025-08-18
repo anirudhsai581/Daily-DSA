@@ -13,6 +13,7 @@ Constraints:
 Bruteforce using 4 nested loops and set to filter out unique pairs , T.C is O(n**4), S.C is O(k) for set+O(k) for answer array if considered, 
 here k-> no.of unique triplets  
 function fourSum(nums, target) {
+//solved completely on own with previous experience of 2sum,3sum
       let n=nums.length; let seen=new Set();let res=[];
           for(let i=0;i<n-3;i++){
             for(let j=i+1;j<n;j++){
@@ -35,6 +36,7 @@ function fourSum(nums, target) {
 Brute force 2 : same 4 nested loops but before we sort the array and add condition to skip duplicates in each loop,avoid using set.
 T.C is O(n**4) S.C is O(1) auxilary space and O(k) for output array (k is no.of unique triplets)
 function fourSum(nums, target) {
+//solved completely on own with previous experience of 2sum,3sum
       let n=nums.length;let res=[];
       nums.sort((a,b)=>a-b);
           for(let i=0;i<n-3;i++){
@@ -63,6 +65,7 @@ and S.C is O(n) for hashmap +O(m) for set and result where m is no.of unique qua
 
 function fourSum(nums, target) {
       let n=nums.length; let res=[]; let seen=new Set();
+      //solved completely on own with previous experience of 2sum,3sum
       for(let i=0;i<n;i++){
         for(let j=i+1;j<n;j++){
           let hashmap = new Map();//we are using  hashmap and store compliment and its index or can also store any other value instead of idx 
@@ -92,6 +95,7 @@ function fourSum(nums, target) {
 */
 
 function otpimalFourSum(nums, target) {
+    //solved completely on own with previous experience of 2sum,3sum
       let n=nums.length;let res=[];
          nums.sort((a,b)=>(a-b));
          for(let i=0;i<n-3;i++){
