@@ -1,5 +1,6 @@
 
-# 📚 My Learning Notes for Arrays
+# 📚 My Learning Notes for Hashing
+
 <!-- USE CTRL+SHIFT+V inside md file to preview rendered in vscode itself -->
 ## 📌 Array Methods Complexities :
 1.reverse Time complexity: O(n) as internally its similar to two pointer approach only, and space complexity is O(1)
@@ -47,17 +48,6 @@ console.log(ans);
 // ]
 ```
 ---
-## 📌 Initialising 2D array in arrays  :
-1. For ..of loop when we use local name of iterator like suppose let el , if inside loop we do el=el+3 etc it wont skip iterations by next iteration it will again be next element , each el changes is only to that iteration of loop .
- ```
-let nums = [1, 2, 3, 4, 5];
-for (let el of nums) {
-  console.log("Before:", el);
-  el = el + 3;   // changes only local el
-  console.log("After:", el);
-}
-console.log(nums); // still [1, 2, 3, 4, 5]
-```
 Inline code looks like this: `const x = 10;`
 
 ---
