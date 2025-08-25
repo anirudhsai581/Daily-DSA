@@ -20,7 +20,9 @@ class ListNode {
   }
 }
 
-//optimal:
+//optimal: directly assining head to it next ,so start of head is shifted , and also the older node will be garbage collected
+// so we dont need to explictily free memory by deleting node like in CPP: let temp=head;delete temp; or free(temp).
+//T.C is O(1) S.C is O(1).
 
 class Solution {
   deleteHead(head) {
