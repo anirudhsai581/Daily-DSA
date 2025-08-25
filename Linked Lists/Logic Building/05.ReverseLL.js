@@ -1,0 +1,6 @@
+/*
+Given the head of a singly Linked List. Traverse the entire Linked List and return its elements in an array in the 
+order of their appearance.
+
+
+*/
