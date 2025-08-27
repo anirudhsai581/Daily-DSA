@@ -11,7 +11,8 @@ Constraints:
 0 <= number of nodes in the Linked List <= 105
 0 <= ListNode.val <= 2
 */
-
+//Brute:we can count no.of 0's and 1's and 2's in three iterations (total count-(0's+1's) in two iterations:0's and 1's )then iterating over linked list
+//and updating first n nodes as 0  (n=count of 0's) similarly next count of 1's nodes as 1 and remaining as 2.
 /*
 //solved better on own 
 Better: Iterating two times on linkedList once we sort 0's to first by maintaining node pointing to next of last seen zero and swapping the value of 
