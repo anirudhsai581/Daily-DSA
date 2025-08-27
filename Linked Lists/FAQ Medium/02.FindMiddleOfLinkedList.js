@@ -13,6 +13,7 @@ Constraints:
 /*
 Brute: find the count by traversing the array once then find the middle index based on even or odd ,actually if we take floor of count/2 and then add1
 it will be the middle required for both odd and even as per question (2nd middle for even).
+T.C is O(n+n/2), S.C is O(1).
 /*Definition for Singly Linked List
 class ListNode {
     constructor(val = 0, next = null) {
@@ -40,7 +41,7 @@ class Solution {// 123null
     }
 }
 */
-//optimal:T.C O(n) single traversal, S.C is O(1). Using two pointers fast and slow moving fast two steps but slow one step
+//optimal:T.C O(n/2) as fast pointer only traverses half the nodes , S.C is O(1). Using two pointers fast and slow moving fast two steps but slow one step
 
 //Definition for Singly Linked List
 class ListNode {
@@ -76,3 +77,36 @@ class Solution {
     return slow;
   }
 }
+
+// Utility Function to print the linked list
+function printLinkedList(head) {
+  let temp = head;
+
+  // Traverse the linked list and print each node's value
+  while (temp !== null) {
+    process.stdout.write(temp.val + " ");
+    temp = temp.next;
+  }
+  console.log();
+}
+
+// Creating a simple linked list
+let head = new ListNode(1);
+let second = new ListNode(2);
+let third = new ListNode(3);
+let fourth = new ListNode(4);
+let fifth = new ListNode(5);
+
+head.next = second;
+second.next = third;
+third.next = fourth;
+fourth.next = fifth;
+
+// Creating an object of Solution class
+let sol = new Solution();
+
+// Function call to get the middle node of linked list
+let middleNode = sol.middleOfLinkedList(head);
+
+printLinkedList(head);
+console.log("The middle node is:", middleNode.val);
