@@ -91,3 +91,12 @@ class Solution {
     return maxLen;
   }
 }
+const nums = [-1, 1, 1];
+const k = 1;
+
+// Create an instance of the Solution class
+const solution = new Solution();
+// Function call to get the result
+const len = solution.longestSubarray(nums, k);
+
+console.log("The length of the longest subarray is:", len);
