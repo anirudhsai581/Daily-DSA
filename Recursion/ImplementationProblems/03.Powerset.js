@@ -24,7 +24,9 @@ then the push of the first callhappens and similarly goes for nested calls.
 
 
 //T.C is O(2**n) as we make one call for each element of powerset which takes O(1) so overall 2**n is no.of elements in powerset , 2calls for each inclusion exclusion
-2*2*2 when n=3, general 2*2*2*...n 2**n. 
+2*2*2 when n=3, general 2*2*2*...n 2**n.we can also think of this step as each depth in recursion 2 times more calls . level 1 2calls ,next 4 calls
+as n elemets depth is n , so 2**n. Also we are copying curr in to ans this depends on length of curr at most it will be 'n' and so T.C can be worst O(n*(2**n).
+
 S.C is O(n* (2**n)) as 2**n subsets  in ans set  each set can have at most n . so generalising O((2**n )*n).
 
 */
@@ -43,35 +45,35 @@ passed in parameter all rec calls refers the same array.if we had passed initial
  very important to maintain local and global parameters correctly in recusrion for memory optimisation .
 */
 class Solution {
-    powerSet(nums) {
-        //solved after watching editorial initially was doing slice with start ,end start +1 one call and end-1 another call this way only
-        //consequent substring will be returned that too with repetetions not at all relavant to powerset.
-        let n=nums.length;
-        let res=[];
-        let idx=0;let curr=[];
-        this.power(0,curr,res,nums,n);
-        return res;
-    }
+  powerSet(nums) {
+    //solved after watching editorial initially was doing slice with start ,end start +1 one call and end-1 another call this way only
+    //consequent substring will be returned that too with repetetions not at all relavant to powerset.
+    let n = nums.length;
+    let res = [];
+    let idx = 0;
+    let curr = [];
+    this.power(0, curr, res, nums, n);
+    return res;
+  }
 
-     power(idx,curr,res,nums,n){
-            if(idx==n){
-                res.push([...curr]);
-                //we cannot do res.push(curr) because it will push curr ref into this which will be mutated
-                //so we push ...curr just the copy value.
-                return;
-            }
-            //excluding currenet element at index by directly calling idx+1 without pushing anything to current
-            this.power(idx+1,curr,res,nums,n);
-            //including current element ad index (idx) by pushing nums[idx] to current and increasing idx
-            curr.push(nums[idx])//we cannot directly do it in recursive call parameter as 
-            //in js push return new array length not the updated array.
-            this.power(idx+1,curr,res,nums,n);
-             //backtrack while this recursion cal explores till res and backtracks it would have extra element added
-             //at current path to explore other possibilities we remove it 
-             curr.pop();
-            
-        }
+  power(idx, curr, res, nums, n) {
+    if (idx == n) {
+      res.push([...curr]);
+      //we cannot do res.push(curr) because it will push curr ref into this which will be mutated
+      //so we push ...curr just the copy value.
+      return;
+    }
+    //excluding currenet element at index by directly calling idx+1 without pushing anything to current
+    this.power(idx + 1, curr, res, nums, n);
+    //including current element ad index (idx) by pushing nums[idx] to current and increasing idx
+    curr.push(nums[idx]); //we cannot directly do it in recursive call parameter as
+    //in js push return new array length not the updated array.
+    this.power(idx + 1, curr, res, nums, n);
+    //backtrack while this recursion cal explores till res and backtracks it would have extra element added
+    //at current path to explore other possibilities we remove it
+    curr.pop();
+  }
 }
 const sol = new Solution();
 const nums = [1, 2, 3];
-console.log(sol.powerSet(nums));  
+console.log(sol.powerSet(nums));
