@@ -58,3 +58,36 @@ class Solution {
     this.helper(candidates, target, curr, idx + 1, n, ans);
   }
 }
+/* 
+same using Iterative +backtrack approach
+//consdier sorting ,though below works if have sorted array then we can prune early once candidates[i]>sum 
+class Solution {
+    combinationSum(candidates, target) {
+        //iterative recursive way
+        let ans=[];
+        this.dfs(candidates,target,[],0,0,ans);
+        return ans;
+    }
+    dfs(candidates,target,curr,sum,start,ans){
+        if(sum===target){ans.push([...curr]);return}
+        if(sum>target){return}
+        for(let i=start;i<candidates.length;i++){
+            curr.push(candidates[i]);
+            this.dfs(candidates,target,curr,sum+candidates[i],i,ans);
+            curr.pop();
+        }
+    }
+} 
+    
+T.C is 
+Let D = ⌊target / min(candidates)⌋ = maximum depth of recursion.(if target=7 and min=1 then d=7. (1+1+1+1+1+1+1))
+At each step, the DFS loop tries all candidates starting from some index.
+So in the worst case (ignoring pruning), at every level we could branch into up to N(length of array options)
+like if we had [1,2,3] target=7 , at each level we can brach upto 3options,so branching factor=3(length N); depth=7(d)
+so total calls O(N**d) here O(3**7) + no.of solutions *D  as each valid solution needs copying which has max length D(depth AKA(also known as here) (target/min));
+so O(n**d + #solutions*d )(where #solutions means no.of solutions in ans array).
+S.C is combination of Auxiliary (call stack + curr) = O(D) and ans array :O(S × D) (we store S solutions, each up to length D).
+Total (including output) = O(D + S × D) → dominated by O(S × D) in the worst case.
+
+
+*/

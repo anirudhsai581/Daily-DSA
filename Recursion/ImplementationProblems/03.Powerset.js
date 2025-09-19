@@ -23,11 +23,11 @@ order will be something like [[] [3] [2] [2,3] [1] [1,3] [1,2] [1,2,3]] as after
 then the push of the first callhappens and similarly goes for nested calls. 
 
 
-//T.C is O(2**n) as we make one call for each element of powerset which takes O(1) so overall 2**n is no.of elements in powerset , 2calls for each inclusion exclusion
-2*2*2 when n=3, general 2*2*2*...n 2**n.we can also think of this step as each depth in recursion 2 times more calls . level 1 2calls ,next 4 calls
-as n elemets depth is n , so 2**n. Also we are copying curr in to ans this depends on length of curr at most it will be 'n' and so T.C can be worst O(n*(2**n).
+//T.C is O(2**n) as we make one call for each element of powerset which takes O(1) at each depth we have (2**(n-1)) calls total depth is n ,total calls are
+// (2**(n+1)-1 ) (leaf calls are itself 2**n producing 2**n subsets in ans array)  in asymptotic terms its O(2**n) as O(2*2**n) is same as O(2**n),like (for [a,b,c] depth 0 we make first recursive call. depth1 we make two calls including a exlcuding a
+// depth 2 we make 4 calls ,depth 3(n) we make 8 calls total 2**4 -1 which is 15 calls in asymptotics). Also we are copying curr in to ans this depends on length of curr at most it will be 'n' and so T.C can be worst O(n*(2**n).
 
-S.C is O(n* (2**n)) as 2**n subsets  in ans set  each set can have at most n . so generalising O((2**n )*n).
+S.C is O(n* (2**n)) as 2**n subsets in ans set each set can have at most n length  . so generalising O((2**n )*n).
 
 */
 /*important point of backtracking: here we are maintaining the same array curr for all recursive calls thats why backtracking is required as array ref is being
@@ -77,3 +77,77 @@ class Solution {
 const sol = new Solution();
 const nums = [1, 2, 3];
 console.log(sol.powerSet(nums));
+
+/* iterative backtracking way : 
+
+
+function subsets_forloop(nums) {
+  const ans = [];
+  const n = nums.length;
+
+  function dfs(start, curr) {
+    ans.push([...curr]); // record current subset
+    for (let i = start; i < n; i++) {
+      curr.push(nums[i]);
+      dfs(i + 1, curr);
+      curr.pop();
+    }
+  }
+
+  dfs(0, []);
+  return ans;
+
+  //we generate suppose nums=[a,b,c]  ans array will be : [[],[a],[a,b],[a,b,c],[a,c],[b],[b,c],[c]]
+  //we go with index full depth pushing the curr each time , once we reach end, we pop and backtrack , then we push next index and along with it 
+  //all its next ones once we reach end of this we backtrack and start with next index go full again
+  // this is kind of including everything with curr index as start with nested loops ensuring we move (excluding the next one) 
+  // Time Complexity: O(n*2**n) S.C is    mix of output size which is O(n*2**n) + extra space which is O(n) (call stack depth O(n)+temporrary curr uses O(n))
+overall space complexity is O(n*2**n).*/
+
+/* Iterative expansion method (pure iterative no recursion in this) 
+  
+  idea: to first start with ans=[[]] then for all arrays inside the existing ans we add curr element and push .these are extra arrays being pushed 
+  along with existing arrays this means we are doubling arrays that are present in ans each time , its like exclusion arrays of this  element
+  are already present till this idx, now we are adding inclusion arrays till this idx and exclusion and inclusion arrays of the current idx with elements
+  after this will also be created when we are doing same for next coming indexes. 
+  code:
+  function subsets_bfs(nums) {
+  let ans = [[]];          // start with empty subset
+  for (const x of nums) {
+    const newOnes = ans.map(s => [...s, x]); // add x to each existing subset
+    ans = ans.concat(newOnes);               // expand
+  }
+  return ans;
+}
+  
+or easier to understand :
+function powerSet(arr) {
+  let ans = [[]]; // start with empty subset
+
+  for (let num of arr) {
+    let newSubsets = [];
+    for (let subset of ans) {
+      // create a new subset by adding current element
+      newSubsets.push([...subset, num]);
+    }
+    // add all new subsets to the answer
+    ans.push(...newSubsets);
+  }
+
+  return ans;
+}
+
+console.log(powerSet([1, 2, 3]));
+// [
+//   [],        [ 1 ],
+//   [ 2 ],     [ 1, 2 ],
+//   [ 3 ],     [ 1, 3 ],
+//   [ 2, 3 ],  [ 1, 2, 3 ]
+// ]
+
+
+
+
+Time Complexity: O(n*2**n) S.C is    mix of output size which is O(n*2**n) + extra space which is O(2**n (at each step you hold all subsets (current + new), which grows 2**n)
+overall space complexity is O(n*2**n).
+*/
