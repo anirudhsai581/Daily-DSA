@@ -69,6 +69,26 @@ function modPow(a, b, mod) {
 }
 ```
 
+```javascript
+//Same code without bit manipulation
+function modPow(a, b, mod) {
+  let res = 1;
+  a = a % mod;
+
+  while (b > 0) {
+    // if b is odd
+    if (b % 2 === 1) {
+      res = (res * a) % mod;
+    }
+
+    a = (a * a) % mod;
+    b = Math.floor(b / 2); // shift right
+  }
+
+  return res;
+}
+```
+
 ## Fermat Modular Inverse
 
 ```javascript

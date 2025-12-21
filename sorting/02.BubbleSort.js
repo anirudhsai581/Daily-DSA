@@ -8,12 +8,12 @@ Constraints:
 nums[i] may contain duplicate values.
 */
 
-/* idea:
-in each iteration we find out the maximum and push it to last, then we find out max in 0-n-2 and push it to n-2 .Finding max is checking adjacents like
+/* idea:"Push maximum to the end in each iteration using adj swaps"
+in each iteration we find out the maximum and push it to last, then we find out max in 0 to n-2 and push it to n-2 .Finding max is checking adjacents like
 0,1 then 1,2 then 2,3 and keep swapping if num is greater than next number this way max will be pushed right. at first we check everuthing from 0 to n-1 then since n-1 contains max now,
 we check only 0 to n-2 ,and so on
 so outer loop is for 0 to n-2 as after n-1 operations the first element will automatically be shortest.
-then inner loop first time from o to n-2 (we check arr[j] >arr[j+1]) so  we stop at n-2 if we check n-1 then arr[j+1] will be out of bounds
+then inner loop first time from 0 to n-2 (we check arr[j] >arr[j+1]) so  we stop at n-2 if we check n-1 then arr[j+1] will be out of bounds
 then second loop from 0 to n-3 then third loop from 0 to n-4 and ... ith loop is 0 to (n-i-1)*/
 //T.C is O(n**2) S.C is O(1)
 //T.C in worst and avg  and best :  O(n**2) //we can optimise best to O(n) by optimised bubble sort (using flag)

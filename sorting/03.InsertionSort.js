@@ -10,7 +10,8 @@ nums[i] may contain duplicate values.
 
  */
 
-/*idea: iterate over the array, for every element till that element find its //correct position and insert there,
+/*idea: "each element put in its position (before the elements greater that it ) until its curr position."
+        iterate over the array, for every element till that element find its //correct position and insert there,
         (instead of having every continous swaps from that element we copy the current element  then find the position
         to insert by moving the elements of it to right by 1 position as long as they are greater than this ,then we
         insert . if we had followed swaps it would be little extra though its also O(n**2) in each movement we are moving key to left and element to right 

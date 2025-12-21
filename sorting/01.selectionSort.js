@@ -10,9 +10,10 @@ Output: [1, 1, 4, 4, 5]
 Explanation: 1 <= 1 <= 4 <= 4 <= 5.
 Thus the array is sorted in non-decreasing order.*/
 
-/* Idea: at each iteration we find minimum of the array from its position to till end then we swap it with current ,so array will be sorted from 
-start till current ,we move to next ,  we find min from curr till end , we swap with curr .
-so outer loop to iterate over array, inner loop from curr to n find min and swap with outer loop element we are at.outer loop only till n-2 as
+/* Idea: "find min in each iteration swap to first element of that iteration"(optimal : swap only if min is not first)
+at each iteration we find minimum of the array from its position to till end then we swap it with current position ,so array will be sorted from 
+start till current ,we move to next ,  we find min from curr position to  end , we swap with curr .
+so outer loop to iterate over array , inner loop from curr to n find min and swap with outer loop element we are at.outer loop only till n-2 as
 if all the elements before last element are sorted then last is automatically sorted .
 T.C is inner loop runs for n,n-1,n-2,n-3....1  so n(n+1)/2 which is O(n**2) this is best,worst,avg all same
 S.C is O(1)*/
@@ -23,13 +24,16 @@ class Solution {
   selectionSort(nums) {
     let n = nums.length;
     for (let i = 0; i < n - 1; i++) {
-      let min = i;
+      let minIdx = i;
       for (let j = i + 1; j < n; j++) {
-        if (nums[j] < nums[min]) {
-          min = j;
+        if (nums[j] < nums[minIdx]) {
+          minIdx = j;
         }
       }
-      [nums[min], nums[i]] = [nums[i], nums[min]];
+      if (minIdx != i) {
+        //this if condition check is micro optimisation, we can directly swap too no issues.
+        [nums[minIdx], nums[i]] = [nums[i], nums[minIdx]];
+      }
     }
     return nums;
   }
