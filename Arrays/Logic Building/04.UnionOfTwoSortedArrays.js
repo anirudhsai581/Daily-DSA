@@ -53,40 +53,46 @@ Space Complexity :O(n+m)// array to store the result of union
 
 */
 
-function unionArray(nums1, nums2)  {
-     let i=0;let j=0;let n=nums1.length;let m=nums2.length;
-    let res=[];
-   
-    while(i<n&&j<m){
-        if(nums1[i]==nums2[j]){
-           if(i==0 || nums1[i]!=nums1[i-1]) {
-                res.push(nums1[i]);
-           }
-                i++;j++;
-             
-        }
-       else if(nums1[i]>nums2[j]){
-        if(j===0 || nums2[j]!=nums2[j-1]){
-            res.push(nums2[j]);
-        }
-            j++;
-        
-            
-        }
-        else{
-             if(i==0 || nums1[i]!=nums1[i-1]) {
-                res.push(nums1[i]);
-             }
-                i++;
-             
-        }
-    }
-    while(i<n){
-         if(i===0 ||nums1[i]!=nums1[i-1]) {res.push(nums1[i])}i++};
-    while(j<m){if(j==0 || nums2[j]!=nums2[j-1]){res.push(nums2[j])}j++};
-   return res;
-    }
-    let nums1=[3, 4, 6, 7, 9, 9] ;let nums2=[1, 5, 7, 8, 8];
-console.log(unionArray(nums1,nums2));
+function unionArray(nums1, nums2) {
+  let i = 0;
+  let j = 0;
+  let n = nums1.length;
+  let m = nums2.length;
+  let res = [];
 
-
+  while (i < n && j < m) {
+    if (nums1[i] == nums2[j]) {
+      if (i == 0 || nums1[i] != nums1[i - 1]) {
+        res.push(nums1[i]);
+      }
+      i++;
+      j++;
+    } else if (nums1[i] > nums2[j]) {
+      if (j === 0 || nums2[j] != nums2[j - 1]) {
+        res.push(nums2[j]);
+      }
+      j++;
+    } else {
+      if (i == 0 || nums1[i] != nums1[i - 1]) {
+        res.push(nums1[i]);
+      }
+      i++;
+    }
+  }
+  while (i < n) {
+    if (i === 0 || nums1[i] != nums1[i - 1]) {
+      res.push(nums1[i]);
+    }
+    i++;
+  }
+  while (j < m) {
+    if (j == 0 || nums2[j] != nums2[j - 1]) {
+      res.push(nums2[j]);
+    }
+    j++;
+  }
+  return res;
+}
+let nums1 = [3, 4, 6, 7, 9, 9];
+let nums2 = [1, 5, 7, 8, 8];
+console.log(unionArray(nums1, nums2));

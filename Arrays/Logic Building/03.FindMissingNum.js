@@ -21,6 +21,7 @@ O(2N)=>O(N)., S.C is O(N) for HashMap.(own thought)
 Better2:Sorting the array O(nlogn) then iterating over sorted array and checking first num that is missing ,we can do
 this by substracting previous value from current value if diff is not 1 and 2 then arr[i]-1 is the missing num
 O(nlogn)+O(n) => O(nlogn) will be the time complexity , S.C is O(1) (own implementation)
+or we could have checked if num is equal to idx or not.
 ```
 function missingNumber(nums) {
             nums.sort((a,b)=>(a-b));
@@ -37,16 +38,17 @@ optimal 1:Using Math we can find Expected Sum of numbers 0 to N is N(N+1)/2 and 
 number is Expected-current .(solution done own from hint watched sum word). T.C is O(N) S.C is O(1).
 */
 function missingNumber(nums) {
-    let n=nums.length;
-    let sum=0;let expectedSum=0;
-    for(let num of nums){
-    sum+=num;
-    }
-    expectedSum=n*(n+1)/2;
-    return expectedSum-sum;
+  let n = nums.length;
+  let sum = 0;
+  let expectedSum = 0;
+  for (let num of nums) {
+    sum += num;
+  }
+  expectedSum = (n * (n + 1)) / 2;
+  return expectedSum - sum;
 }
-let nums=[1,3,2,0,5];
-console.log(missingNumber(nums));//4
+let nums = [1, 3, 2, 0, 5];
+console.log(missingNumber(nums)); //4
 
 /*
 optimal 2:
