@@ -22,35 +22,37 @@ T.C is O(n*n) ->all positibe numbers travelled once n/2 and neg once n/2 ,outer 
 overall n*(n/2+n/2); O(n**2), S.C is O(n) to store res array.
 
 */
-function  bruteRerrangeArray(nums) {
-        //came up with whole brute force on own
-        
-       let n= nums.length;
-       let res=[]; let pos_idx=0;let neg_idx=0; let flag=true;
-       while(res.length<(n)){
-        if(flag==true){
-            for(let i=pos_idx;i<n;i++){
-             if(nums[i]>0){
-                res.push(nums[i]);
-                pos_idx=i+1;
-                flag=false;
-                break;
-              }
-            }
+function bruteRerrangeArray(nums) {
+  //came up with whole brute force on own
+
+  let n = nums.length;
+  let res = [];
+  let pos_idx = 0;
+  let neg_idx = 0;
+  let flag = true;
+  while (res.length < n) {
+    if (flag == true) {
+      for (let i = pos_idx; i < n; i++) {
+        if (nums[i] > 0) {
+          res.push(nums[i]);
+          pos_idx = i + 1;
+          flag = false;
+          break;
         }
-        else{
-             for(let i=neg_idx;i<n;i++){
-             if(nums[i]<0){
-                res.push(nums[i]);
-                neg_idx=i+1;
-                flag=true;
-                break;
-              }
-            } 
+      }
+    } else {
+      for (let i = neg_idx; i < n; i++) {
+        if (nums[i] < 0) {
+          res.push(nums[i]);
+          neg_idx = i + 1;
+          flag = true;
+          break;
         }
-       }
-       return res;
+      }
     }
+  }
+  return res;
+}
 /*
 BruteForce Better:
 i came up with bruterforce better but i thought we should not use extra space to store +ves and -ves and thiking in
@@ -66,22 +68,47 @@ to store pos and neg in single pass into result array ,T.C overall is O(n+n/2) a
 
 */
 function bruteBetterRearrangeArray(nums) {
+  let n = nums.length;
+  let pos = [];
+  let neg = [];
+  let res = [];
+  for (let i = 0; i < n; i++) {
+    if (nums[i] > 0) {
+      pos.push(nums[i]);
+    } else {
+      neg.push(nums[i]);
+    }
+  }
+  for (let i = 0; i < n / 2; i++) {
+    res.push(pos[i]);
+    res.push(neg[i]);
+  }
+  return res;
+}
+/* just better not optimal: one of my ideas :
+    Find the  two pointers pointing to first pos and first neg indices, then use while loop to push alternatively into res array
+     then move each of the pos and neg idx pointers to next set of + and - indices(using inner while loops).
+     T.C O(n/2) for finding first pos and first neg, then while loop in which a will travel O(n) and b will travel max O(n).
+     so overall O(n/2+n+n) which is O(n). S.C is O(n) as we are using extra arr to store output.so this comes under aux space.
+
+rearrangeArray(nums) {
         let n=nums.length;
-    let pos=[];let neg=[]; let res=[];
-    for(let i=0;i<n;i++){
-        if(nums[i]>0){
-            pos.push(nums[i]);
-        }
-        else{
-            neg.push(nums[i]);
-        }
-    }
-    for(let i=0;i<n/2;i++){
-        res.push(pos[i]);
-        res.push(neg[i]);
-    }
-    return res;
-    }
+        let a=0,b=0;
+        let ans=[]
+       for(let i=0;i<n;i++){
+          if(nums[i]>0){a=i;break;}
+       }
+       for(let i=0;i<n;i++){
+          if(nums[i]<0){b=i;break;}
+       }
+       while(a<=n&&b<=n){
+            ans.push(nums[a]);a++;
+            ans.push(nums[b]);b++;
+            while(nums[b]>0){ b++}
+            while(nums[a]<0){a++}
+       }
+       return ans;
+    } */
 
 /*
 Optimal:
@@ -91,23 +118,23 @@ while iterating over original array if we encounter positive we store it in next
 index.
 T.C is O(n), S.C is O(n)(result array storage)
 */
-function  OptimalRearrangeArray(nums) {
-        let n=nums.length;
-         let res=[];
-    let pos_idx=0;let neg_idx=1;
-    for(let i=0;i<n;i++){
-        if(nums[i]>0){
-           res[pos_idx]=nums[i];
-           pos_idx=pos_idx+2;
-        }
-        else{
-            res[neg_idx]=nums[i];
-            neg_idx=neg_idx+2;
-        }
+function OptimalRearrangeArray(nums) {
+  let n = nums.length;
+  let res = [];
+  let pos_idx = 0;
+  let neg_idx = 1;
+  for (let i = 0; i < n; i++) {
+    if (nums[i] > 0) {
+      res[pos_idx] = nums[i];
+      pos_idx = pos_idx + 2;
+    } else {
+      res[neg_idx] = nums[i];
+      neg_idx = neg_idx + 2;
     }
-    return res;
-    }
-let nums=[1, -1, -3, -4, 2, 3]
+  }
+  return res;
+}
+let nums = [1, -1, -3, -4, 2, 3];
 console.log(bruteRerrangeArray(nums));
 console.log(bruteBetterRearrangeArray(nums));
 console.log(OptimalRearrangeArray(nums));
