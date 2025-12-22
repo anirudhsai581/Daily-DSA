@@ -53,21 +53,41 @@ T.C : O(n), S.C is O(1) (we have done inplace as mentioned)
 current unique elements are present where next unique element to be updated.
 Difficulty:Easy.
 */
-function  removeDuplicates(nums) {
-     //complete solved on own idea came from previous 
-      //moving zeroes to end problem experience.
-       let count=1; let a=null;
-       let n=nums.length;let dup=0;
-         a=nums[0];
-       for(let i=1;i<n;i++){
-        if(nums[i]!=a){
-            a=nums[i];
-            [nums[count],nums[i]]=[nums[i],nums[count]];
-            count++;
-       }
-    } 
-    return count;
+function removeDuplicates(nums) {
+  //complete solved on own idea came from previous
+  //moving zeroes to end problem experience.
+  let count = 1;
+  let a = null;
+  let n = nums.length;
+  a = nums[0];
+  for (let i = 1; i < n; i++) {
+    if (nums[i] != a) {
+      a = nums[i];
+      [nums[count], nums[i]] = [nums[i], nums[count]];
+      count++;
+    }
+  }
+  return count;
 }
 //by end count will have no.of unique elements also.
-let nums=[0, 0, 3, 3, 5, 6];
-console.log(removeDuplicates(nums));//4
+let nums = [0, 0, 3, 3, 5, 6];
+console.log(removeDuplicates(nums)); //4
+
+//Simpler form of the above is , to track "idx" variable instead of value which also gives us countby+1 at the end.
+/* idx keeps track of non repeating sorted array till that point, then we iterate using i, if value at i is diff from value at idx then we 
+do idx+1 to move to next slot and push i value into that and now idx points to this latest value.
+At the end ,idx will be pointing to last element of no repetetion array. since 0based indexing , for count do idx+1
+S.C is O(1)  T.C is O(n) */
+class Solution {
+  removeDuplicates(nums) {
+    let n = nums.length;
+    let idx = 0;
+    for (let i = 0; i < n; i++) {
+      if (nums[i] != nums[idx]) {
+        idx++;
+        [nums[idx], nums[i]] = [nums[i], nums[idx]];
+      }
+    }
+    return idx + 1;
+  }
+}
