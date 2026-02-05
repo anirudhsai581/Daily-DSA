@@ -24,7 +24,9 @@ cookies arr as well. and then a while loop with two pointers to two arrays if st
 else we just move to next bigger cookie and remain at the same student , we exit while loop either if we run out of cookies or students.
 T.C : to sort :O(nlogn)+ O(mlogm) and then O(m)) for while loop (as at max we go only till end of cookies even if students are more,even if students are less
 we may traverse whole cookies array if any student expectation can not be satisfied by any cookie)
-so overall: O(nlogn+mlogm+m),S.C is O(1) Aux Space */
+so overall: O(nlogn+mlogm+m),S.C is O(1) Aux Space 
+ Greedy point: Maximise no.of students can be given cookies by assigning least size cookie to least expected student first greedily so that
+ bigger cookies are left for more expecting students  */
 class Solution {
   findMaximumCookieStudents(Student, Cookie) {
     //your code goes here

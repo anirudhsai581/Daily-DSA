@@ -16,7 +16,8 @@ if its 10 there is only one way return one five and increase one ten at us, if i
 one 5 and one 10, here we have to greedily choose least 5's returned as 5 is lesser value so future transactions can be possible like if a 10 comes 
 we can return 5 , so we first check if we can return a 10+5 if not we check for 5+5+5.
 T.C is O(n) traversing the given array 
-S.C is O(1) Aux space as we just need two variables to keep track of 5 and 10 count */
+S.C is O(1) Aux space as we just need two variables to keep track of 5 and 10 count 
+Greedypoint: we try to give change using larger denominations so that lesser denominations can be saved more for later as its needed more than 10 later */
 
 class Solution {
   lemonadeChange(bills) {
